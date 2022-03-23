@@ -10,9 +10,9 @@ User.destroy_all
 Instrument.destroy_all
 Discipline.destroy_all
 
-user1 = User.create(profile_imageUrl: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/78/78e7dd7f68289cb914dfd5ec7218f9161ee830fc_full.jpg",username: "Rockpotato", password: "chillin", password_confirmation: "chillin", first_name: "Carl", last_name: "Barker")
+user1 = User.create(profile_imageUrl: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/78/78e7dd7f68289cb914dfd5ec7218f9161ee830fc_full.jpg",username: "Rockpotato", password_digest: "chillin", first_name: "Carl", last_name: "Barker")
 
-user2 = User.create(profile_imageUrl:"https://pngset.com/images/punk-rock-colorful-girl-poster-punk-rock-hair-haircut-person-human-transparent-png-355894.png", username: "Flavortune", password: "apple", password_confirmation: "apple", first_name: "Alex", last_name: "English")
+user2 = User.create(profile_imageUrl:"https://pngset.com/images/punk-rock-colorful-girl-poster-punk-rock-hair-haircut-person-human-transparent-png-355894.png", username: "Flavortune", password_digest: "apple", first_name: "Alex", last_name: "English")
 
 Instrument.create(
 instrument_imageUrl:"https://toppng.com/uploads/preview/acoustic-classic-guitar-11530935734ygj1np8m01.png",
