@@ -20,6 +20,7 @@ instrument_name: "Acoustic Guitar",
 instrument_description:"Acoustic Guitar, from Classical Nylon stringed, to metal stringed Acoustic Guitars."
 )
 
+
 Instrument.create(
 instrument_imageUrl:"https://toppng.com/uploads/preview/electric-guitar-11530937008gqwe1aygab.png",
 instrument_name: "Electric Guitar",
