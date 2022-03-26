@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
+
+  #Custom Routes
+
+  #http verb, url, controller#action
+
+  get 'disciplines', to: 'disciplines#index'
+  get 'instruments', to: 'instruments#index'
+  get 'users', to: 'users#index'
+
+
+  #resource: generate 7 routes that follow REST
   
-  resources :disciplines, only: [:index, :show]
-  resources :instruments, only: [:index, :show]
-  resources :users, only: [:index, :show]
+  resources :disciplines, only: [:show, :create, :new, :edit, :update]
+  resources :instruments, only: [:show, :create, :new, :edit, :update]
+  resources :users, only: [:show, :create, :new, :edit, :update]
 
   #get '/users/:id', to: 'users#show'
   # Routing logic: fallback requests for React Router.

@@ -3,7 +3,8 @@ class DisciplinesController < ApplicationController
     #     disciplines = Disciplines.all
     #     render json: disciplines
     # end
-    def new
-        @discpline = Discipline.new
+    def index
+        disciplines = Discpline.all
+        render json: disciplines 
     end
 end
