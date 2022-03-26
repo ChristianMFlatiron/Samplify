@@ -1,3 +1,3 @@
 class Instrument < ApplicationRecord
-    belongs_to :user, dependent: :destroy
+    has_many :users, dependent: :destroy
 end
