@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_many :discipline
-    has_many :instrument
+    has_many :disciplines
+    has_many :instruments
 end

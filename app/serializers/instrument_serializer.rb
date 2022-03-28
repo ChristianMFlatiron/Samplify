@@ -1,3 +1,3 @@
 class InstrumentSerializer < ActiveModel::Serializer
-  attributes :id, :instrument, :user_id, :genre
+  attributes :id, :instrument_imageUrl, :instrument_name,:instrument_description
 end
