@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from 'react-router-dom'
 
-const userUrl = "http://localhost:3001/users";
+const userUrl = "http://localhost:30000/users";
 
 const Signup = ({ setCurrentUser }) => {
   // controlled form for user details
