@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div>
-      <h3>SAMPLIFY</h3>
+      <h3>SAMPLIFY 2</h3>
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />

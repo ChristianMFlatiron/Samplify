@@ -12,16 +12,16 @@ function NavBar () {
     // function onLogout() {
     //     setUser(null);
     //   }
-      return (
-        <MenuBar>
-          <li><NavLink to ="/">Home</NavLink></li>
-          <li><NavLink to ="/users">Users</NavLink></li>
-          <li><NavLink to ="/disciplines">Disciplines</NavLink></li>
-          <li><NavLink to ="/instruments">Instruments</NavLink></li>
-          <li><NavLink to ="/login">Login</NavLink></li>
-          <li><NavLink to ="/signup">Sign Up</NavLink></li>
-          {/* <buttom onClick={handleLogout}>Logout</buttom> */}
-         </MenuBar>)
+  return (
+    <MenuBar>
+    <li><NavLink to ="/login">Login</NavLink></li>
+    <li><NavLink to ="/">Home</NavLink></li>
+    <li><NavLink to ="/users">Users</NavLink></li>
+    <li><NavLink to ="/disciplines">Disciplines</NavLink></li>
+    <li><NavLink to ="/instruments">Instruments</NavLink></li>
+    <li><NavLink to ="/signup">Sign Up</NavLink></li>
+    <br></br>
+    </MenuBar>)
 
 }
 

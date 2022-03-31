@@ -15,7 +15,10 @@ function Home() {
       <h1>Welcome to Samplify 2</h1>
       <p>Lets get Rockin!</p>
       <h2> Click Above</h2>
+      <br></br>
     </div>
+    
+    
   );
 }
 
