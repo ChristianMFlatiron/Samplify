@@ -6,6 +6,8 @@ import DisciplineContainer from "./DisciplineContainer";
 import InstrumentContainer from "./InstrumentContainer";
 import { Route , Routes } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import Login from './Login';
+import SignUp from './SignUp';
 
 function App() {
   const [userList, setUserList] = useState([]);
@@ -49,6 +51,8 @@ function App() {
         <Route exact path="/users" element={<UserContainer userList={userList} />} />
         <Route exact path="/disciplines" element={<DisciplineContainer disciplineList={disciplineList} setDisciplineList={setDisciplineList} />}/>
         <Route exact path="/instruments" element={<InstrumentContainer instrumentList = {instrumentList} />}/>
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<SignUp />}/>
       </Routes>
     </div>
   );

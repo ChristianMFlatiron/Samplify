@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const URL = 'http://localhost:3000/';
 
@@ -12,8 +13,8 @@ const Login = ({ setBorrowsAndHistory, setCurrentUser }) => {
 	// errors for when username or password are not correct
 	const [errors, setErrors] = useState([])
 
-	// Pass reference to useHistory hook
-	const history = useHistory()
+	// Pass reference to useNavigate hook
+	const history = useNavigate()
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -97,3 +98,26 @@ const Login = ({ setBorrowsAndHistory, setCurrentUser }) => {
 }
 
 export default Login;
+
+// function ifLogin(e) {
+//     e.preventDefault();
+//     return fetch("/login", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ email, password }),
+//     })
+//       .then((r) => r.json())
+//       .then((user) => {
+//         if (user.error) {
+//           setErrors(errors);
+//           alert(
+//             "Your email address or password (or both, for that matter) is incorrect!"
+//           );
+//         } else {
+//           setUser(user);
+//           setIsLogin(true);
+//         }
+//       });
+//   }

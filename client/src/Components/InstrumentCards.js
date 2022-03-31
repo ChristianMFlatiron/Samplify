@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 
 function InstrumentCards({ instrument: { instrument_imageUrl, instrument_name, instrument_description, id } }) {
 
-  let history = useNavigate();
-  const handleClick = (e) => {
-    e.preventDefault();
-    history.push(`/instruments/${id}`);
-  };
+  // let history = useNavigate();
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/instruments/${id}`);
+  // };
   
   return (
-    <Cards onClick={handleClick}>
+    <Cards >
       <img src={instrument_imageUrl} alt={instrument_name} />
       <h1>{instrument_name}</h1>
     </Cards>

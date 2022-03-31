@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
-const userUrl = "http://localhost:30000/users";
+const userUrl = "http://localhost:3000/users";
 
 const Signup = ({ setCurrentUser }) => {
   // controlled form for user details
   const [userForm, setUserForm] = useState({
     username: "",
     password: "",
-    confirm: "",
   });
   const handleChange = (e) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
@@ -17,7 +17,7 @@ const Signup = ({ setCurrentUser }) => {
 	const [errors, setErrors] = useState([])
 
   // Pass reference to useHistory hook
-  const history = useHistory()
+  const history = useNavigate()
 
   // sends user signup info to back end and handles validation errors
   const sendAuthInfo = () => {

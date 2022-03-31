@@ -2,7 +2,7 @@
 //import { useNavigate } from "react-router-dom";
 
 
-function UserCards({ user: { id, profile_imageUrl, username, first_name, last_name} }) {
+function UserCards({ user: { id, profile_imageUrl, username, first_name, last_name, userdescription} }) {
 
   // let history = useNavigate();
   // const handleClick = (e) => {
@@ -15,6 +15,8 @@ function UserCards({ user: { id, profile_imageUrl, username, first_name, last_na
       <img src={profile_imageUrl} alt={username} />
       <h1>{username}</h1>
       <h2>{first_name} {last_name}</h2>
+      <p>{userdescription}</p>
+      <buttom>INVITE TO GIG</buttom>
     </div>
   );
 }
