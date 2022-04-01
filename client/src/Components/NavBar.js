@@ -14,13 +14,12 @@ function NavBar () {
     //   }
   return (
     <MenuBar>
-    <li><NavLink to ="/login">Login</NavLink></li>
-    <li><NavLink to ="/">Home</NavLink></li>
+   <li><NavLink to ="/">Home</NavLink></li>
     <li><NavLink to ="/users">Users</NavLink></li>
     <li><NavLink to ="/disciplines">Disciplines</NavLink></li>
     <li><NavLink to ="/instruments">Instruments</NavLink></li>
     <li><NavLink to ="/signup">Sign Up</NavLink></li>
-    <br></br>
+    <li><NavLink to ="/login">Login</NavLink></li>
     </MenuBar>)
 
 }
@@ -28,21 +27,11 @@ function NavBar () {
 export default NavBar;
 
 const MenuBar = styled.ul`
-   padding: 3%;
-   display:flex;
-   justify-content:space-around;
-   font-family: 'Special Elite', cursive;
-   
-   li{
-       list-style: none;
-
-       a {
-        color:black;
-        text-decoration: none;
-        font-size: 28px;
-        border: 2px solid black;
-        padding: 7px;
-        
-    } 
-
-`
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+`;

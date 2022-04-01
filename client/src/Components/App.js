@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from "./Home";
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import UserContainer from"./UserContainer"
 import DisciplineContainer from "./DisciplineContainer";
 import InstrumentContainer from "./InstrumentContainer";

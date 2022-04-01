@@ -12,7 +12,7 @@ import React from 'react';
 function Home() {
   return (
     <div>
-      <h1>Welcome to Samplify 2</h1>
+      <h1>Welcome to Samplify 2 Hey!</h1>
       <p>Lets get Rockin!</p>
       <h2> Click Above</h2>
       <br></br>
