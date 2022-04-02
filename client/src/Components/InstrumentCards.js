@@ -10,8 +10,14 @@ function InstrumentCards({ instrument: { instrument_imageUrl, instrument_name, i
   //   history.push(`/instruments/${id}`);
   // };
   
+  function showUsers (e){
+    alert(e.target.value);
+  }
+
+
+
   return (
-    <Cards >
+    <Cards onClick={showUsers}>
       <img src={instrument_imageUrl} alt={instrument_name} />
       <h1>{instrument_name}</h1>
     </Cards>
