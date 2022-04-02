@@ -10,10 +10,18 @@ Rails.application.routes.draw do
 
 
   #resource: generate 7 routes that follow REST
+  post '/login',    to: 'sessions#create'
+  post '/logout',   to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
+
+
   
-  resources :disciplines, only: [:index, :show, :create, :update]
-  resources :instruments, only: [:index,:show, :create, :update]
-  resources :users, only: [:index,:show, :create, :update]
+  resources :disciplines, only: [:create, :show, :index]
+  resources :instruments, only: [:create,:show, :index]
+  # resources :users, only: [:index,:show, :create, :update]
+  resources :users, only: [:create, :show, :index, :update] do 
+    resources :items, only: [:create, :show, :index, :destroy]
+ end
 
   #get '/users/:id', to: 'users#show'
   # Routing logic: fallback requests for React Router.

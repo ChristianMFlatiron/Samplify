@@ -13,7 +13,10 @@ function App() {
   const [userList, setUserList] = useState([]);
   const [disciplineList, setDisciplineList] = useState([]);
   const [instrumentList, setInstrumentList] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+
+  
 
   //Users URL Fetch
   const userUrl = "http://localhost:3000/users";
