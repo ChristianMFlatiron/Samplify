@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   #resource: generate 7 routes that follow REST
   
-  resources :disciplines, only: [:index, :show, :create, :update]
-  resources :instruments, only: [:index,:show, :create, :update]
+  
+  resources :instruments, only: [:index,:show]
   resources :users, only: [:index,:show, :create, :update]
+  resources :user_instruments, only: [:index, :show, :create, :update]
 
   #get '/users/:id', to: 'users#show'
   # Routing logic: fallback requests for React Router.

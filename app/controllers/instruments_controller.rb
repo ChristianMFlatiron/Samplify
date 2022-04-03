@@ -5,4 +5,9 @@ class InstrumentsController < ApplicationController
         render json: instruments
     end
 
+    def show
+        instrument = Instrument.find_by(id:params[:id])
+        render json: instrument
+    end
+
 end
