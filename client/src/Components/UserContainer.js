@@ -1,9 +1,10 @@
 import UserCards from "./UserCards";
 import styled from "styled-components";
 
-
 function UserContainer({ userList }) {
-  const userCards = userList.map((user) => <UserCards key={user.id} user={user} />);
+  const userCards = userList.map((user) => (
+    <UserCards key={user.id} user={user} />
+  ));
 
   return <CardContainer>{userCards}</CardContainer>;
 }

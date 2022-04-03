@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 //import React, { useState } from "react"
 //import {useNavigate} from "react-router-dom"
 // import styled from 'styled-components';
-    
 
 // const newHeist = {
 //   name: "",
@@ -18,6 +17,5 @@ function Home() {
     </div>
   );
 }
-
 
 export default Home;

@@ -2,31 +2,30 @@ import styled from "styled-components";
 //import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
-
-
-function InstrumentCards({ instrument: { instrument_imageUrl, instrument_name, instrument_description, id } }) {
-
+function InstrumentCards({
+  instrument: {
+    instrument_imageUrl,
+    instrument_name,
+    instrument_description,
+    id,
+  },
+}) {
   //let history = useNavigate();
   // const handleClick = (e) => {
   //   e.preventDefault();
   //   history.push(`/instruments/${id}`);
   // };
-  
+
   return (
-    <Cards >
+    <Cards>
       <img src={instrument_imageUrl} alt={instrument_name} />
       <h1>{instrument_name}</h1>
       <Link to={`/instrumentusers/${id}`}>Find a User</Link>
-
-
     </Cards>
   );
 }
 
-
 export default InstrumentCards;
-
 
 const Cards = styled.div`
     margin 5rem;
