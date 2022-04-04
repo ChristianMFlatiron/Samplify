@@ -1,3 +1,3 @@
 class InstrumentUserSerializer < ActiveModel::Serializer
-  attributes :id, :username
+  attributes :id, :username, :profile_imageUrl, :first_name, :last_name
 end

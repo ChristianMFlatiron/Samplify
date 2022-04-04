@@ -18,8 +18,8 @@ function InstrumentCards({
 
   return (
     <Cards>
-      <img src={instrument_imageUrl} alt={instrument_name} />
       <h1>{instrument_name}</h1>
+      <img src={instrument_imageUrl} alt={instrument_name} />
       <Link to={`/instrumentusers/${id}`}>Find a User</Link>
     </Cards>
   );

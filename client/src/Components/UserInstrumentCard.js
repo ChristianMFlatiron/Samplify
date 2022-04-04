@@ -1,13 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-function UserInstrumentCard({ user, user: { profile_imageUrl, username } }) {
+function UserInstrumentCard({
+  user,
+  user: { profile_imageUrl, username, first_name, last_name, instrument_name },
+}) {
   console.log(user.profile_imageUrl);
   return (
     <Cards>
+      <br></br>
+      <h2>Stage name: {username}</h2>
+      <br></br>
       <img src={profile_imageUrl} alt={username} />
-      <br />
-      <h1>{username}</h1>
+      <h2>
+        Name: {first_name} {last_name}
+      </h2>
+      {/* <p>Plays {instrument_name}</p> */}
+      <button>Invite to Gig</button>
     </Cards>
   );
 }
