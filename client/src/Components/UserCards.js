@@ -2,22 +2,26 @@ import styled from "styled-components";
 //import { useNavigate } from "react-router-dom";
 
 function UserCards({
-  user: { id, profile_imageUrl, username, first_name, last_name },
+  user,
+  user: { id, profile_imageUrl, username, first_name, last_name, instruments },
 }) {
   // let history = useNavigate();
   // const handleClick = (e) => {
   //   e.preventDefault();
   //   history.push(`/users/${id}`);
   // };
-
+  console.log(instruments[0]);
   return (
     <Cards>
-      <h1>{username}</h1>
+      <h4>Stage name: {username}</h4>
       <img src={profile_imageUrl} alt={username} />
       <h2>
         Name: {first_name} {last_name}
       </h2>
-      <button>Invite to Gig</button>
+      <p>{instruments[0].instrument_name}</p>
+      <button onClick={() => alert("User Invited to Gig!")}>
+        Invite to Gig
+      </button>
     </Cards>
   );
 }
@@ -32,11 +36,12 @@ const Cards = styled.div`
     padding-right: 3em;
     font-family: 'Special Elite', cursive;
     padding-right: 8em;
+    background-color: grey;
 
     img{
-      float: left;
-      width:  300px;
-      height: 300px;
+      float: center;
+      width:  250px;
+      height: 250px;
       object-fit: cover;
       padding-bottom: 1em;
     }

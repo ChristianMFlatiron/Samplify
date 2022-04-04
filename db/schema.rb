@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_223246) do
+ActiveRecord::Schema.define(version: 2022_03_23_035836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_223246) do
     t.string "instrument_imageUrl"
     t.string "instrument_name"
     t.string "instrument_description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_instruments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "instrument_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_223246) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.integer "instrument_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

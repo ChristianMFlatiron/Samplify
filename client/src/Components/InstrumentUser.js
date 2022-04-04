@@ -22,9 +22,10 @@ function InstrumentUsers() {
   }
 
   const showThisInstrument = thisInstrument.users.map((i) => {
+    console.log(i);
     return (
       <div key={i.id}>
-        <UserInstrumentCard user={i} />
+        <UserInstrumentCard user={i} instrument={i.instruments} />
       </div>
     );
     // return console.log("WORK!!!");

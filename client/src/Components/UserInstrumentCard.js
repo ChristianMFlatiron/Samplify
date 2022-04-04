@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 function UserInstrumentCard({
-  user,
-  user: { profile_imageUrl, username, first_name, last_name, instrument_name },
+  instrument,
+  user: { profile_imageUrl, username, first_name, last_name },
 }) {
-  console.log(user.profile_imageUrl);
+  console.log(instrument);
   return (
     <Cards>
       <br></br>
@@ -15,8 +15,10 @@ function UserInstrumentCard({
       <h2>
         Name: {first_name} {last_name}
       </h2>
-      {/* <p>Plays {instrument_name}</p> */}
-      <button>Invite to Gig</button>
+      {/* <p>{instrument.instrument_name}</p> */}
+      <button onClick={() => alert("User Invited to Gig!")}>
+        Invite to Gig
+      </button>
     </Cards>
   );
 }

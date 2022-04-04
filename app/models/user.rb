@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :user_instruments
-    has_many :instruments, through: :user_instruments  
+    has_many :instruments 
+    has_secure_password
     
     validates :username, uniqueness: true
     validates :username, presence: true

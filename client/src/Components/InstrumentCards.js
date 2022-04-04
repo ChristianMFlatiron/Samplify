@@ -20,6 +20,7 @@ function InstrumentCards({
     <Cards>
       <h1>{instrument_name}</h1>
       <img src={instrument_imageUrl} alt={instrument_name} />
+      <p>{instrument_description}</p>
       <Link to={`/instrumentusers/${id}`}>Find a User</Link>
     </Cards>
   );
@@ -35,15 +36,18 @@ const Cards = styled.div`
     padding-right: 3em;
     font-family: 'Special Elite', cursive;
     padding-right: 8em;
+    background-color: grey;
     
 
 
     img{
       float: left;
-      width:  300px;
-      height: 300px;
+      width:  280px;
+      height: 280px;
       object-fit: cover;
       padding-bottom: 1em;
+      
+
     }
     
 
