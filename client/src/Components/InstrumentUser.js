@@ -21,19 +21,22 @@ function InstrumentUsers() {
     return "Loading...";
   }
 
-  const showThisInstrument = thisInstrument.users.map((i) => {
-    console.log(i);
-    return (
-      <div key={i.id}>
-        <UserInstrumentCard user={i} instrument={i.instruments} />
-      </div>
-    );
-    // return console.log("WORK!!!");
-  });
+  // const showThisInstrument = thisInstrument.users.map((i) => {
+  //   console.log(i);
+  //   return (
+  //     <div key={i.id}>
+  //       {/* <UserInstrumentCard user={i} instrument={i.instruments} /> */}
+  //     </div>
+  //   );
+  //   // return console.log("WORK!!!");
+  // });
 
   //   showThisInstrument();
 
-  return <div>{showThisInstrument}</div>;
+  return (
+    <div></div>
+    // <div>{showThisInstrument}</div>;
+  );
 }
 
 export default InstrumentUsers;

@@ -10,7 +10,7 @@ function UserCards({
   //   e.preventDefault();
   //   history.push(`/users/${id}`);
   // };
-  console.log(instruments[0]);
+  // console.log(instruments[0]);
   return (
     <Cards>
       <h4>Stage name: {username}</h4>
@@ -18,7 +18,7 @@ function UserCards({
       <h2>
         Name: {first_name} {last_name}
       </h2>
-      <p>{instruments[0].instrument_name}</p>
+      {/* <p>{instruments[0].instrument_name}</p> */}
       <button onClick={() => alert("User Invited to Gig!")}>
         Invite to Gig
       </button>

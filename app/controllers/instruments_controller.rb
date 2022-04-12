@@ -1,5 +1,8 @@
 class InstrumentsController < ApplicationController
 
+
+    skip_before_action :authorize, only: :index
+
     def index
         instruments = Instrument.all
         render json: instruments

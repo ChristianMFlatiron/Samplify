@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :instruments 
+    belongs_to :instruments 
     has_secure_password
     
     validates :username, uniqueness: true

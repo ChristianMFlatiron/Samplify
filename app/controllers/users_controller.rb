@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     
+  skip_before_action :authorize, only: :index
 
     def index
         users = User.all
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation)
+        params.permit(:username, :password, :password_confirmation, :instrument_id)
     end
     # def show
     #     user = User.find(params[:id])
