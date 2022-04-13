@@ -8,19 +8,15 @@ function SignUp({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/signup", {
+    const user = { username, password };
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-      }),
-    })
-      .then((r) => r.json())
-      .then(onLogin);
+      body: JSON.stringify(user),
+    }).then((r) => r.json().then(setCurrentUser));
+    // .then(onLogin);
   }
 
   return (

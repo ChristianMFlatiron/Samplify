@@ -6,10 +6,12 @@ import InstrumentContainer from "./InstrumentContainer";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InstrumentUsers from "./InstrumentUser";
+import Login from "./Login";
 
 function App() {
   const [userList, setUserList] = useState([]);
   const [instrumentList, setInstrumentList] = useState([]);
+  const [currentUser, setCurrentUser] = useState("");
 
   //Users URL Fetch
   //const userUrl = "https://localhost:3000/users";
@@ -29,19 +31,31 @@ function App() {
       .then((instruments) => setInstrumentList(instruments));
   }, []);
 
-  const [user, setUser] = useState(null);
-
+  //Auto Login
   useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+    fetch("/auth").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setCurrentUser(user));
       }
     });
   }, []);
 
+  if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
+
+  // const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
+
   return (
     <div>
       <h3>SAMPLIFY</h3>
+      {/* <Banner user={currentUser} /> */}
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+//import { Link, useHistory } from "react-router-dom";
 
-function Login({ onLogin }) {
+function Login() {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,16 +15,28 @@ function Login({ onLogin }) {
       body: JSON.stringify({ username }),
     })
       .then((r) => r.json())
-      .then((user) => onLogin(user));
+      .then((user) => user);
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <label>
+        Username:
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </label>
+      <br></br>
+      <label>
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
       <button type="submit">Login</button>
     </form>
   );
