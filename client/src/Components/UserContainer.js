@@ -5,7 +5,7 @@ function UserContainer({ userList }) {
   const userCards = userList.map((user) => (
     <UserCards key={user.id} user={user} />
   ));
-
+  console.log("user container");
   return <CardContainer>{userCards}</CardContainer>;
 }
 

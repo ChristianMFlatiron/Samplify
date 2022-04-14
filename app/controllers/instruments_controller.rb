@@ -1,7 +1,7 @@
 class InstrumentsController < ApplicationController
 
 
-    skip_before_action :authorize, only: :index
+    skip_before_action :authorized, only: :index
 
     def index
         instruments = Instrument.all

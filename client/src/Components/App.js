@@ -39,18 +39,8 @@ function App() {
       }
     });
   }, []);
-
+  console.log(instrumentList);
   if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
-
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("/me").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
 
   return (
     <div>
@@ -59,21 +49,12 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/users" element={<UserContainer userList={userList} />} />
         <Route
-          exact
-          path="/users"
-          element={<UserContainer userList={userList} />}
-        />
-        <Route
-          exact
           path="/instruments"
           element={<InstrumentContainer instrumentList={instrumentList} />}
         />
-        <Route
-          exact
-          path="/instrumentusers/:id"
-          element={<InstrumentUsers />}
-        />
+        <Route path="/instrumentusers/:id" element={<InstrumentUsers />} />
       </Routes>
     </div>
   );

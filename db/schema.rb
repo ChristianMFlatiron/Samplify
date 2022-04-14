@@ -10,16 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_035836) do
+ActiveRecord::Schema.define(version: 2022_04_13_055609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "band_owners", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "band_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bands", force: :cascade do |t|
+    t.string "band_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "instruments", force: :cascade do |t|
     t.string "instrument_imageUrl"
     t.string "instrument_name"
     t.string "instrument_description"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
