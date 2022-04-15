@@ -13,8 +13,12 @@ class UsersController < ApplicationController
   # end
 
   def show
-    current_user = User.find(session[:id])
+    current_user = User.find_by(id: session[:id])
+    if current_user
     render json: current_user
+    else 
+      render json: "No current user", status: :unauthorized
+    end
   end
 
 

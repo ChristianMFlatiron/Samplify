@@ -19,6 +19,9 @@ function NavBar({ onLogout }) {
         <NavLink to="/Instruments">Instruments</NavLink>
       </li>
       <li>
+        <NavLink to="/Login">Login</NavLink>
+      </li>
+      <li>
         <button onClick={handleLogout}>Logout</button>
       </li>
     </MenuBar>

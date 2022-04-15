@@ -40,7 +40,7 @@ function App() {
     });
   }, []);
   console.log(instrumentList);
-  if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
+  // if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
   return (
     <div>
@@ -50,6 +50,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/users" element={<UserContainer userList={userList} />} />
+        <Route
+          path="/login"
+          element={<Login setCurrentUser={setCurrentUser} />}
+        />
         <Route
           path="/instruments"
           element={<InstrumentContainer instrumentList={instrumentList} />}
