@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-function Login() {
+function Login({ setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
@@ -17,34 +18,99 @@ function Login() {
     })
       .then((r) => r.json())
       .then((user) => {
+        setCurrentUser(user);
         navigate("/");
-        user;
+        console.log(user);
       });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
+    <Wrapper>
+      <Form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <br></br>
+        <label>
+          Password:
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <Button type="submit">Login</Button>
+      </Form>
       <br></br>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type="submit">Login</button>
-    </form>
+      <Link to="/signup" variant="body2">
+        Don't have an account? SignUp here
+      </Link>
+    </Wrapper>
   );
 }
+
+export default Login;
+
+const Form = styled.form`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 414px;
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+`;
+
+const Button = styled.button`
+  max-width: 100%;
+  padding: 11px 13px;
+  color: rgb(253, 249, 243);
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #f03d4e;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  :hover {
+    background: rgb(200, 50, 70);
+    
+`;
+
+const Input = styled.input`
+  max-width: 100%;
+  padding: 11px 13px;
+  background: #f9f9fa;
+  color: #f03d4e;
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+  :focus,
+  :hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+`;
+
 // const URL = "http://localhost:3000/";
 
 // const Login = ({ setBorrowsAndHistory, setCurrentUser }) => {
@@ -110,7 +176,7 @@ function Login() {
 //           name="username"
 //           placeholder="Enter your username..."
 //           className="input-text"
-//           onChange={(e) => handleInupt(e)}
+//           onChange={(e) => handleInput(e)}
 //           value={userForm.username}
 //         />
 //         {renderErrors("username")}
@@ -121,7 +187,7 @@ function Login() {
 //           name="password"
 //           placeholder="Enter your password..."
 //           className="input-text"
-//           onChange={(e) => handleInupt(e)}
+//           onChange={(e) => handleInput(e)}
 //           value={userForm.password}
 //         />
 //         {renderErrors("password")}
@@ -134,5 +200,3 @@ function Login() {
 //     </div>
 //   );
 // };
-
-export default Login;

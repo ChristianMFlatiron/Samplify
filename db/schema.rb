@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_04_13_055609) do
 
   create_table "bands", force: :cascade do |t|
     t.string "band_name"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

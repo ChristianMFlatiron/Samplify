@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import InstrumentUsers from "./InstrumentUser";
 import Login from "./Login";
 import UserBandContainer from "./UserBandContainer";
+import Signup from "./SignUp";
 
 function App() {
   const [userList, setUserList] = useState([]);
@@ -52,6 +53,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/signup" element={<Signup />} />
         <Route
           path="/userband"
           element={<UserBandContainer bandList={bandList} />}

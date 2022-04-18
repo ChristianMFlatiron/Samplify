@@ -70,7 +70,8 @@ u6 = User.create!(profile_imageUrl: "https://pbs.twimg.com/media/E9udtUmWEAIo7o5
 
 #Bands
 b1 = Band.create!(
-    band_name: "Morgoth"
+    band_name: "Morgoth",
+    user_id: u1.id
     )
 
 #Band_Owners?

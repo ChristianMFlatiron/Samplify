@@ -2,10 +2,10 @@ import UserBandCard from "./UserBandCard";
 import styled from "styled-components";
 
 function UserBandContainer({ bandList }) {
-  const userBandCard = bandList.map((band) => {
-    <UserBandCard key={band.id} band={band} />;
-  });
-
+  const userBandCard = bandList.map((band) => (
+    <UserBandCard key={band.id} band={band} />
+  ));
+  console.log("user band container");
   return <CardContainer>{userBandCard}</CardContainer>;
 }
 

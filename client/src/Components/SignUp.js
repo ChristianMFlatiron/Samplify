@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  let navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +16,12 @@ function SignUp({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then((r) => r.json().then(setCurrentUser));
+    })
+      .then((r) => r.json())
+      .then((user) => {
+        navigate("/users");
+        // user;
+      });
     // .then(onLogin);
   }
 
@@ -46,6 +52,13 @@ function SignUp({ onLogin }) {
     </form>
   );
 }
+
+export default SignUp;
+
+// Then Statement Old rework?
+//.then((r) => r.json().then(setCurrentUser))
+
+//Old code:
 // const userUrl = "http://localhost:3001/users";
 
 // const Signup = ({ setCurrentUser }) => {
@@ -176,5 +189,3 @@ function SignUp({ onLogin }) {
 //     </div>
 //   );
 // };
-
-export default Signup;
