@@ -5,12 +5,6 @@ function UserCards({
   user,
   user: { id, profile_imageUrl, username, first_name, last_name, instruments },
 }) {
-  // let history = useNavigate();
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   history.push(`/users/${id}`);
-  // };
-  // console.log(instruments[0]);
   return (
     <Cards>
       <h4>Stage name: {username}</h4>
@@ -47,3 +41,13 @@ const Cards = styled.div`
     }
 
 `;
+
+//Old Code just in case
+// }) {
+//   // let history = useNavigate();
+//   // const handleClick = (e) => {
+//   //   e.preventDefault();
+//   //   history.push(`/users/${id}`);
+//   // };
+//   // console.log(instruments[0]);
+//   return (

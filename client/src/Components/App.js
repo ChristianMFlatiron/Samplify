@@ -7,11 +7,14 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InstrumentUsers from "./InstrumentUser";
 import Login from "./Login";
+import UserBandContainer from "./UserBandContainer";
 
 function App() {
   const [userList, setUserList] = useState([]);
   const [instrumentList, setInstrumentList] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [bandList, setBandList] = useState([]);
 
   //Users URL Fetch
   //const userUrl = "https://localhost:3000/users";
@@ -49,6 +52,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route
+          path="/userband"
+          element={<UserBandContainer bandList={bandList} />}
+        />
         <Route path="/users" element={<UserContainer userList={userList} />} />
         <Route
           path="/login"

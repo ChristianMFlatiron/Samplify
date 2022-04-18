@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-//import { Link, useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +16,10 @@ function Login() {
       body: JSON.stringify({ username, password }),
     })
       .then((r) => r.json())
-      .then((user) => user);
+      .then((user) => {
+        navigate("/");
+        user;
+      });
   }
 
   return (
