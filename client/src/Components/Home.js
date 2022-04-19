@@ -8,10 +8,10 @@ import React from "react";
 //   creator_name: ""
 // };
 
-function Home() {
+function Home({ user }) {
   return (
     <div>
-      <h1>Welcome to Samplify 2</h1>
+      <h1>Welcome to Samplify 2 {user.first_name}</h1>
       <p>Lets get Rockin!</p>
       <h2> Click Above</h2>
     </div>

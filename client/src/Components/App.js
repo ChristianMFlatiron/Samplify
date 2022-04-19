@@ -13,7 +13,7 @@ import Signup from "./SignUp";
 function App() {
   const [userList, setUserList] = useState([]);
   const [instrumentList, setInstrumentList] = useState([]);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [bandList, setBandList] = useState([]);
 
@@ -50,9 +50,9 @@ function App() {
     <div>
       <h3>SAMPLIFY</h3>
       {/* <Banner user={currentUser} /> */}
-      <NavBar />
+      <NavBar user={currentUser} />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home user={currentUser} />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route
           path="/userband"

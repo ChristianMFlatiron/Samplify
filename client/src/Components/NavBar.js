@@ -1,12 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-function NavBar({ onLogout }) {
-  function handleLogout() {
-    fetch("/logout", {
-      method: "DELETE",
-    }).then(() => onLogout());
-  }
+function LoggedInNavBar({ onLogout }) {
   return (
     <MenuBar>
       <li>
@@ -16,19 +11,43 @@ function NavBar({ onLogout }) {
         <NavLink to="/users">Users</NavLink>
       </li>
       <li>
-        <NavLink to="/signup">SignUp</NavLink>
+        <NavLink to="/Instruments">Instruments</NavLink>
       </li>
       <li>
-        <NavLink to="/Instruments">Instruments</NavLink>
+        <Button onClick={onLogout}>Logout</Button>
+      </li>
+    </MenuBar>
+  );
+}
+
+function LoggedOutNavBar() {
+  return (
+    <MenuBar>
+      <li>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
         <NavLink to="/Login">Login</NavLink>
       </li>
       <li>
-        <Button onClick={handleLogout}>Logout</Button>
+        <NavLink to="/signup">SignUp</NavLink>
       </li>
     </MenuBar>
   );
+}
+
+function NavBar({ onLogout, user }) {
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+  }
+
+  if (user) {
+    return <LoggedInNavBar onLogout={handleLogout} />;
+  } else {
+    return <LoggedOutNavBar />;
+  }
 }
 
 export default NavBar;
@@ -41,7 +60,6 @@ const MenuBar = styled.ul`
    
    li{
        list-style: none;
-
        a {
         color:black;
         text-decoration: none;
@@ -50,7 +68,6 @@ const MenuBar = styled.ul`
         padding: 7px;
         
     } 
-
 `;
 
 const Button = styled.button`
