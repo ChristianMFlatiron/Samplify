@@ -1,9 +1,10 @@
 import InstrumentCards from "./InstrumentCards";
 import styled from "styled-components";
 
-
 function InstrumentContainer({ instrumentList }) {
-  const instrumentCards = instrumentList.map((instrument) => <InstrumentCards key={instrument.id} instrument={instrument} />);
+  const instrumentCards = instrumentList.map((instrument) => (
+    <InstrumentCards key={instrument.id} instrument={instrument} />
+  ));
 
   return <CardContainer>{instrumentCards}</CardContainer>;
 }

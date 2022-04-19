@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_043453) do
+ActiveRecord::Schema.define(version: 2022_04_19_230924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "disciplines", force: :cascade do |t|
-    t.string "discipline_imageUrl"
-    t.string "discipline_name"
-    t.string "discipline_description"
+  create_table "band_players", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "band_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bands", force: :cascade do |t|
+    t.string "band_name"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,6 +43,7 @@ ActiveRecord::Schema.define(version: 2022_03_23_043453) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.integer "instrument_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :bands
+  resources :band_players
   #Custom Routes
 
   #http verb, url, controller#action
@@ -10,10 +12,18 @@ Rails.application.routes.draw do
 
 
   #resource: generate 7 routes that follow REST
+  get '/login', to: 'sessions#new' 
+  post '/login', to: 'sessions#create'
+  get '/auth', to: 'users#show'
+  # get '/me', to: 'users#show'
+  delete '/logout', to: 'sessions#destroy'
   
-  resources :disciplines, only: [:index, :show, :create, :update]
-  resources :instruments, only: [:index,:show, :create, :update]
+  
+  resources :instruments, only: [:index,:show]
   resources :users, only: [:index,:show, :create, :update]
+  resources :user_instruments, only: [:index, :show, :create, :update]
+
+  # get "/cookie_click", to: "sessions#click"
 
   #get '/users/:id', to: 'users#show'
   # Routing logic: fallback requests for React Router.

@@ -1,57 +1,93 @@
-import React from 'react';
+import React from "react";
 import Home from "./Home";
-import NavBar from "./Navbar";
-import UserContainer from"./UserContainer"
-import DisciplineContainer from "./DisciplineContainer";
+import NavBar from "./NavBar";
+import UserContainer from "./UserContainer";
 import InstrumentContainer from "./InstrumentContainer";
-import { Route , Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import InstrumentUsers from "./InstrumentUser";
+import Login from "./Login";
+import UserBandContainer from "./UserBandContainer";
+import Signup from "./SignUp";
 
 function App() {
   const [userList, setUserList] = useState([]);
-  const [disciplineList, setDisciplineList] = useState([]);
   const [instrumentList, setInstrumentList] = useState([]);
-
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [bandList, setBandList] = useState([]);
 
   //Users URL Fetch
-  const userUrl = "http://localhost:3000/users";
+  //const userUrl = "https://localhost:3000/users";
 
   useEffect(() => {
-    fetch(userUrl)
+    fetch("/users")
       .then((resp) => resp.json())
-      .then(setUserList);
-  }, []);
-
-  //Disciplines URL Fetch
-  const disciplineUrl = "http://localhost:3000/disciplines";
-
-  useEffect(() => {
-    fetch(disciplineUrl)
-      .then((resp) => resp.json())
-      .then(setDisciplineList);
+      .then((users) => setUserList(users));
   }, []);
 
   //Instruments URL Fetch
-  const instrumentUrl = "http://localhost:3000/instruments";
+  //const instrumentUrl = ;
 
   useEffect(() => {
-    fetch(instrumentUrl)
+    fetch("/instruments")
       .then((resp) => resp.json())
-      .then(setInstrumentList);
+      .then((instruments) => setInstrumentList(instruments));
   }, []);
+
+  //Auto Login
+  useEffect(() => {
+    fetch("/auth").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setCurrentUser(user));
+      }
+    });
+  }, []);
+  console.log(instrumentList);
+  // if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
   return (
     <div>
       <h3>SAMPLIFY</h3>
-      <NavBar />
+      {/* <Banner user={currentUser} /> */}
+      <NavBar user={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/users" element={<UserContainer userList={userList} />} />
-        <Route exact path="/disciplines" element={<DisciplineContainer disciplineList={disciplineList} setDisciplineList={setDisciplineList} />}/>
-        <Route exact path="/instruments" element={<InstrumentContainer instrumentList = {instrumentList} />}/>
+        <Route exact path="/" element={<Home user={currentUser} />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route
+          path="/userband"
+          element={<UserBandContainer bandList={bandList} />}
+        />
+        <Route
+          path="/users/:instrument_filter"
+          element={
+            <UserContainer
+              userList={userList}
+              instrumentList={instrumentList}
+            />
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <UserContainer
+              userList={userList}
+              instrumentList={instrumentList}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={<Login setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/instruments"
+          element={<InstrumentContainer instrumentList={instrumentList} />}
+        />
+        {/* <Route path="/users" element={<InstrumentUsers />} /> */}
       </Routes>
     </div>
   );
-};
+}
 
 export default App;
