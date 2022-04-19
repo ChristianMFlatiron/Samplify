@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :bands
-  resources :band_owners
+  resources :band_players
   #Custom Routes
 
   #http verb, url, controller#action

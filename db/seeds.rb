@@ -9,7 +9,7 @@ puts "destroying old database"
 Instrument.destroy_all
 User.destroy_all
 Band.destroy_all
-BandOwner.destroy_all
+BandPlayer.destroy_all
 puts "creating users"
 
 puts "creating instruments"
@@ -77,6 +77,6 @@ b1 = Band.create!(
 #Band_Owners?
 
 
-bo1= BandOwner.create!(
+bo1= BandPlayer.create!(
     user_id: u1.id,
     band_id: b1.id)
