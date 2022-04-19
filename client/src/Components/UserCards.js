@@ -3,7 +3,15 @@ import styled from "styled-components";
 
 function UserCards({
   user,
-  user: { id, profile_imageUrl, username, first_name, last_name, instruments },
+  instrumentList,
+  user: {
+    id,
+    profile_imageUrl,
+    username,
+    first_name,
+    last_name,
+    instrument_id,
+  },
 }) {
   return (
     <Cards>
@@ -12,7 +20,14 @@ function UserCards({
       <h2>
         Name: {first_name} {last_name}
       </h2>
-      {/* <p>{instruments[0].instrument_name}</p> */}
+      <p>
+        I play:
+        {
+          instrumentList.find(
+            (instrument) => instrument.id === user.instrument_id
+          )?.instrument_name
+        }
+      </p>
       <button onClick={() => alert("User Invited to Gig!")}>
         Invite to Gig
       </button>

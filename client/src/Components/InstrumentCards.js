@@ -21,7 +21,7 @@ function InstrumentCards({
       <h1>{instrument_name}</h1>
       <img src={instrument_imageUrl} alt={instrument_name} />
       <p>{instrument_description}</p>
-      <Link to={`/instrumentusers/${id}`}>Find a User</Link>
+      <Link to={`/users/${id}`}>Find a User</Link>
     </Cards>
   );
 }

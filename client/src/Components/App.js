@@ -50,7 +50,7 @@ function App() {
     <div>
       <h3>SAMPLIFY</h3>
       {/* <Banner user={currentUser} /> */}
-      <NavBar user={currentUser} />
+      <NavBar user={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route exact path="/" element={<Home user={currentUser} />} />
         <Route exact path="/signup" element={<Signup />} />
@@ -58,7 +58,24 @@ function App() {
           path="/userband"
           element={<UserBandContainer bandList={bandList} />}
         />
-        <Route path="/users" element={<UserContainer userList={userList} />} />
+        <Route
+          path="/users/:instrument_filter"
+          element={
+            <UserContainer
+              userList={userList}
+              instrumentList={instrumentList}
+            />
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <UserContainer
+              userList={userList}
+              instrumentList={instrumentList}
+            />
+          }
+        />
         <Route
           path="/login"
           element={<Login setCurrentUser={setCurrentUser} />}
@@ -67,7 +84,7 @@ function App() {
           path="/instruments"
           element={<InstrumentContainer instrumentList={instrumentList} />}
         />
-        <Route path="/instrumentusers/:id" element={<InstrumentUsers />} />
+        {/* <Route path="/users" element={<InstrumentUsers />} /> */}
       </Routes>
     </div>
   );

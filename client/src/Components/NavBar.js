@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function LoggedInNavBar({ onLogout }) {
+function LoggedInNavBar({ onLogout, setCurrentUser }) {
   return (
     <MenuBar>
       <li>
@@ -36,15 +36,24 @@ function LoggedOutNavBar() {
   );
 }
 
-function NavBar({ onLogout, user }) {
+function NavBar({ onLogout, user, setCurrentUser }) {
+  let navigate = useNavigate();
+  function logoutConfirm() {
+    console.log("User Logged Out");
+    setCurrentUser(null);
+    navigate("/");
+  }
+
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
-    }).then(() => onLogout());
+    }).then(() => logoutConfirm());
   }
 
   if (user) {
-    return <LoggedInNavBar onLogout={handleLogout} />;
+    return (
+      <LoggedInNavBar onLogout={handleLogout} setCurrentUser={setCurrentUser} />
+    );
   } else {
     return <LoggedOutNavBar />;
   }
