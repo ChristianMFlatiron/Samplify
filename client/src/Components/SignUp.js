@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function SignUp({ onLogin }) {
+function SignUp({ onLogin, setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [userInstrument, setUserInstrument] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
   let navigate = useNavigate();
+
+  const profile_imageUrl =
+    "https://thumbs.dreamstime.com/z/heavy-metal-devil-horns-hand-sign-15034009.jpg";
 
   function handleSubmit(e) {
     e.preventDefault();
-    const user = { username, password };
+    const user = {
+      username,
+      password,
+      profile_imageUrl,
+      first_name: firstName,
+      last_name: lastName,
+      instrument_id: userInstrument,
+    };
     fetch("/users", {
       method: "POST",
       headers: {
@@ -19,11 +33,14 @@ function SignUp({ onLogin }) {
     })
       .then((r) => r.json())
       .then((user) => {
+        setCurrentUser(user);
         navigate("/users");
-        // user;
       });
     // .then(onLogin);
   }
+  const handleChange = (event) => {
+    setUserInstrument(event.target.value);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,6 +50,20 @@ function SignUp({ onLogin }) {
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+      />
+      <label htmlFor="first_name">First Name:</label>
+      <input
+        type="text"
+        id="first_name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <label htmlFor="last_name">Last Name:</label>
+      <input
+        type="text"
+        id="last_name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
       />
       <label htmlFor="password">Password:</label>
       <input
@@ -48,6 +79,15 @@ function SignUp({ onLogin }) {
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
+      <label htmlFor="instrument">Instrument:</label>
+      <select onChange={handleChange}>
+        <option value={7}>Acoustic Guitar</option>
+        <option value={8}>Electric Guitar</option>
+        <option value={9}>Drums</option>
+        <option value={10}>Bass</option>
+        <option value={11}>Keyboard</option>
+        <option value={12}>Vocals</option>
+      </select>
       <button type="submit">Submit</button>
     </form>
   );

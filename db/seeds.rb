@@ -77,6 +77,6 @@ b1 = Band.create!(
 #Band_Owners?
 
 
-bo1= BandPlayer.create!(
+bp1= BandPlayer.create!(
     user_id: u1.id,
     band_id: b1.id)

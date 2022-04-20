@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-function UserBandCard({ band, band: { id, band_name } }) {
+function MyBandCard({ player, userList }) {
   return (
     <Cards>
-      <h4>Band Name: {band_name}</h4>
+      {/* <h4>Band Name: {band_name}</h4> */}
+      <h1>Hello World!</h1>
     </Cards>
   );
 }
 
-export default UserBandCard;
+export default MyBandCard;
 
 const Cards = styled.div`
     margin 5rem;

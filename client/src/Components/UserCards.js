@@ -4,6 +4,7 @@ import styled from "styled-components";
 function UserCards({
   user,
   instrumentList,
+  currentUser,
   user: {
     id,
     profile_imageUrl,
@@ -28,9 +29,11 @@ function UserCards({
           )?.instrument_name
         }
       </p>
-      <button onClick={() => alert("User Invited to Gig!")}>
-        Invite to Gig
-      </button>
+      {currentUser.band.length > 0 ? (
+        <button onClick={() => alert("User Invited to Gig!")}>
+          Invite to Gig
+        </button>
+      ) : null}
     </Cards>
   );
 }
