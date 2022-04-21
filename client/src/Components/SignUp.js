@@ -84,12 +84,12 @@ function SignUp({ onLogin, setCurrentUser, userList, setUserList }) {
         />
         <label htmlFor="instrument">Instrument:</label>
         <select onChange={handleChange}>
-          <option value={7}>Acoustic Guitar</option>
-          <option value={8}>Electric Guitar</option>
-          <option value={9}>Drums</option>
-          <option value={10}>Bass</option>
-          <option value={11}>Keyboard</option>
-          <option value={12}>Vocals</option>
+          <option value={1}>Acoustic Guitar</option>
+          <option value={2}>Electric Guitar</option>
+          <option value={3}>Drums</option>
+          <option value={4}>Bass</option>
+          <option value={5}>Keyboard</option>
+          <option value={6}>Vocals</option>
         </select>
         <Button type="submit">Submit</Button>
       </Form>

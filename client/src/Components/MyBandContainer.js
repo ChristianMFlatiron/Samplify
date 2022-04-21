@@ -4,6 +4,8 @@ import UserCards from "./UserCards";
 import { useState, useEffect } from "react";
 
 function MyBandContainer({
+  setCurrentUser,
+  setBandList,
   bandList = [],
   currentUser,
   userList,
@@ -13,7 +15,10 @@ function MyBandContainer({
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newBand = { user_id: currentUser.id, band_name: bandName };
+    const newBand = {
+      user_id: currentUser.id,
+      band_name: bandName,
+    };
     fetch("/myband", {
       method: "POST",
       headers: {
@@ -25,38 +30,21 @@ function MyBandContainer({
       .then((json) => {
         console.log("Post completed");
         console.log(json);
+        setBandList([...bandList, json]);
       });
   }
 
   let navigate = useNavigate();
   console.log("this is the current user");
   console.log(currentUser);
-  if (!currentUser) {
-    //redirect to homepage
-    navigate("/");
-    return null;
-  } else if (currentUser.band.length < 1) {
-    return (
-      <Wrapper>
-        <Form onSubmit={handleSubmit}>
-          <label>
-            Band Name:
-            <Input
-              type="text"
-              name="name"
-              value={bandName}
-              onChange={(e) => setBandName(e.target.value)}
-            />
-          </label>
-          <Button type="submit">Create a Band!</Button>
-        </Form>
-      </Wrapper>
-    );
-  } else {
-    const currentBand = bandList.find(
+  if (currentUser.band.length > 0) {
+    console.log(bandList);
+    const currentBand = bandList?.find(
       (band) => band.id === currentUser.band[0].id
     );
-    const playerIds = currentBand.band_players.map((player) => player.user_id);
+    console.log("this is the current band");
+    console.log(currentBand);
+    const playerIds = currentBand?.band_players.map((player) => player.user_id);
     const bandPlayers = userList.filter((user) => playerIds.includes(user.id));
     console.log(playerIds);
     console.log(bandPlayers);
@@ -77,6 +65,27 @@ function MyBandContainer({
         <CardContainer>{myBandCards}</CardContainer>;
       </div>
     );
+  } else if (currentUser) {
+    return (
+      <Wrapper>
+        <Form onSubmit={handleSubmit}>
+          <label>
+            Band Name:
+            <Input
+              type="text"
+              name="name"
+              value={bandName}
+              onChange={(e) => setBandName(e.target.value)}
+            />
+          </label>
+          <Button type="submit">Create a Band!</Button>
+        </Form>
+      </Wrapper>
+    );
+  } else {
+    //redirect to homepage
+    navigate("/");
+    return null;
   }
 }
 

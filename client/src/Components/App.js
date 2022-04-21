@@ -52,7 +52,7 @@ function App() {
       .then((bands) => {
         console.log("Got bands");
         console.log(bands);
-        setBandList(bands);
+        setBandList(Array.isArray(bands) ? bands : []);
       });
   }, []);
 
@@ -82,6 +82,8 @@ function App() {
               currentUser={currentUser}
               userList={userList}
               instrumentList={instrumentList}
+              setBandList={setBandList}
+              setCurrentUser={setCurrentUser}
             />
           }
         />
