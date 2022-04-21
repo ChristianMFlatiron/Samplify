@@ -4,6 +4,7 @@ import styled from "styled-components";
 function UserCards({
   user,
   instrumentList,
+  currentUser,
   user: {
     id,
     profile_imageUrl,
@@ -13,6 +14,20 @@ function UserCards({
     instrument_id,
   },
 }) {
+  function inviteToBand(params) {
+    fetch(`/bands/${params.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .then((band) => {
+        console.log(band);
+      });
+  }
+  console.log(currentUser);
   return (
     <Cards>
       <h4>Stage name: {username}</h4>
@@ -28,9 +43,16 @@ function UserCards({
           )?.instrument_name
         }
       </p>
-      <button onClick={() => alert("User Invited to Gig!")}>
-        Invite to Gig
-      </button>
+
+      {currentUser?.band?.length > 0 ? (
+        <button
+          onClick={() =>
+            inviteToBand({ id: currentUser.band[0].id, player_id: id })
+          }
+        >
+          Invite to Band
+        </button>
+      ) : null}
     </Cards>
   );
 }

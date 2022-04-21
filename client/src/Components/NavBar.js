@@ -11,7 +11,10 @@ function LoggedInNavBar({ onLogout, setCurrentUser }) {
         <NavLink to="/users">Users</NavLink>
       </li>
       <li>
-        <NavLink to="/Instruments">Instruments</NavLink>
+        <NavLink to="/instruments">Instruments</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myband">My Band</NavLink>
       </li>
       <li>
         <Button onClick={onLogout}>Logout</Button>

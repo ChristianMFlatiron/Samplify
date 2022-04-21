@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InstrumentUsers from "./InstrumentUser";
 import Login from "./Login";
-import UserBandContainer from "./UserBandContainer";
+import MyBandContainer from "./MyBandContainer";
 import Signup from "./SignUp";
 
 function App() {
@@ -46,6 +46,16 @@ function App() {
   console.log(instrumentList);
   // if (!currentUser) return <Login setCurrentUser={setCurrentUser} />;
 
+  useEffect(() => {
+    fetch("/bands")
+      .then((resp) => resp.json())
+      .then((bands) => {
+        console.log("Got bands");
+        console.log(bands);
+        setBandList(Array.isArray(bands) ? bands : []);
+      });
+  }, []);
+
   return (
     <div>
       <h3>SAMPLIFY</h3>
@@ -53,10 +63,29 @@ function App() {
       <NavBar user={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route exact path="/" element={<Home user={currentUser} />} />
-        <Route exact path="/signup" element={<Signup />} />
         <Route
-          path="/userband"
-          element={<UserBandContainer bandList={bandList} />}
+          exact
+          path="/signup"
+          element={
+            <Signup
+              setCurrentUser={setCurrentUser}
+              userList={userList}
+              setUserList={setUserList}
+            />
+          }
+        />
+        <Route
+          path="/myband"
+          element={
+            <MyBandContainer
+              bandList={bandList}
+              currentUser={currentUser}
+              userList={userList}
+              instrumentList={instrumentList}
+              setBandList={setBandList}
+              setCurrentUser={setCurrentUser}
+            />
+          }
         />
         <Route
           path="/users/:instrument_filter"
@@ -64,6 +93,7 @@ function App() {
             <UserContainer
               userList={userList}
               instrumentList={instrumentList}
+              currentUser={currentUser}
             />
           }
         />
@@ -73,6 +103,7 @@ function App() {
             <UserContainer
               userList={userList}
               instrumentList={instrumentList}
+              currentUser={currentUser}
             />
           }
         />

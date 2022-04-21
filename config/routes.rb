@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new' 
   post '/login', to: 'sessions#create'
   get '/auth', to: 'users#show'
+  post '/myband', to:'bands#create'
   # get '/me', to: 'users#show'
   delete '/logout', to: 'sessions#destroy'
   

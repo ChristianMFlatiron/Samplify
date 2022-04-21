@@ -2,7 +2,7 @@ import UserCards from "./UserCards";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-function UserContainer({ userList, instrumentList }) {
+function UserContainer({ userList, instrumentList, currentUser }) {
   let { instrument_filter } = useParams();
   let cards;
 
@@ -13,7 +13,12 @@ function UserContainer({ userList, instrumentList }) {
   }
 
   const userCards = cards.map((user) => (
-    <UserCards key={user.id} user={user} instrumentList={instrumentList} />
+    <UserCards
+      key={user.id}
+      user={user}
+      instrumentList={instrumentList}
+      currentUser={currentUser}
+    />
   ));
   console.log(instrument_filter + "this is the filter");
 
