@@ -18,6 +18,6 @@ class BandsController < ApplicationController
 private
 
     def band_params
-        params.permit(:user, :band_players)
+        params.permit(:user_id, :band_name)
     end
 end

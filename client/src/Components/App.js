@@ -66,7 +66,13 @@ function App() {
         <Route
           exact
           path="/signup"
-          element={<Signup setCurrentUser={setCurrentUser} />}
+          element={
+            <Signup
+              setCurrentUser={setCurrentUser}
+              userList={userList}
+              setUserList={setUserList}
+            />
+          }
         />
         <Route
           path="/myband"
